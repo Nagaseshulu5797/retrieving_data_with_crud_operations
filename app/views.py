@@ -72,4 +72,13 @@ def display_emp(request):
 
     d={'emp':LOE}
     return render(request,'display_emp.html',d)
-
+def update_emp(request):
+    #Emp.objects.filter(ename='SMITH').update(job='salesman')
+    #Emp.objects.filter(deptno=20).update(sal='4000')
+    #Emp.objects.filter(deptno=20).update(sal='4000')
+    #Emp.objects.update_or_create(ename='SMITH',defaults={'sal':'3000'})
+    To=Dept.objects.get_or_create(deptno=40)[0]
+    Emp.objects.update_or_create(ename='seshulu',defaults={'empno':7337,'job':'Manager','mgr':7744,'hiredate':'2000-05-5','sal':7000,'comm':000,'deptno':To})
+    
+    d={'emp':Emp.objects.all()}
+    return render(request,'display_emp.html',d)
